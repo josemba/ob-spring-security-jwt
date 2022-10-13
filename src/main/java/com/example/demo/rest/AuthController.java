@@ -52,7 +52,7 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtTokenUtil.generateJwtToken(authentication);
-
+System.out.println("hola mundo jwt: "+jwt);
         // UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
         return ResponseEntity.ok(new JwtResponse(jwt));
