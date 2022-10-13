@@ -7,6 +7,8 @@ import com.example.demo.security.payload.JwtResponse;
 import com.example.demo.security.payload.LoginRequest;
 import com.example.demo.security.payload.MessageResponse;
 import com.example.demo.security.payload.RegisterRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
+
+    private final Logger log = LoggerFactory.getLogger(CarController.class);
 
     private final AuthenticationManager authManager;
     private final UserRepository userRepository;
@@ -52,7 +56,7 @@ public class AuthController {
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtTokenUtil.generateJwtToken(authentication);
-System.out.println("hola mundo jwt: "+jwt);
+log.error("hola mundo jwt: "+jwt);
         // UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
         return ResponseEntity.ok(new JwtResponse(jwt));
