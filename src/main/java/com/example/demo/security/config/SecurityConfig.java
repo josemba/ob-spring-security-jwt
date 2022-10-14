@@ -63,7 +63,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     {
         CorsConfiguration configuration = new CorsConfiguration();
         // configuration.setAllowedOrigins(List.of("http://localhost:4200", "https://angular-springboot-*.vercel.app"));
-        configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:4200", "https://ob-angular-spring-95hswmnut-josemba.vercel.app"));
+        configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:4200", "https://ob-angular-spring-ohhyq7js7-josemba.vercel.app"));
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
         configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Origin", "X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
         configuration.setAllowCredentials(true);
