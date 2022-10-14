@@ -50,11 +50,12 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody LoginRequest loginRequest){
-
+        log.error("hola mundo 1");
         Authentication authentication = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
-
+        log.error("hola mundo 2");
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        log.error("hola mundo 3");
         String jwt = jwtTokenUtil.generateJwtToken(authentication);
 log.error("hola mundo jwt: "+jwt);
         // UserDetails userDetails = (UserDetails) authentication.getPrincipal();
