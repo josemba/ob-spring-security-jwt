@@ -1,8 +1,11 @@
 package com.example.demo.security.config;
 
+import com.example.demo.rest.CarController;
 import com.example.demo.security.jwt.JwtAuthEntryPoint;
 import com.example.demo.security.jwt.JwtRequestFilter;
 import com.example.demo.security.service.UserDetailsServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,7 +31,7 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity // permite a Spring aplicar esta configuracion a la configuraicon de seguridad global
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
+    private final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
 
@@ -60,12 +63,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     {
         CorsConfiguration configuration = new CorsConfiguration();
         // configuration.setAllowedOrigins(List.of("http://localhost:4200", "https://angular-springboot-*.vercel.app"));
+        log.error("corsConfigurationSource 1");
         configuration.setAllowedOriginPatterns(Arrays.asList("http://localhost:4200", "https://ob-angular-spring-7vq24zbui-josemba.vercel.app"));
+        log.error("corsConfigurationSource 2");
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "OPTIONS", "DELETE", "PUT", "PATCH"));
+        log.error("corsConfigurationSource 3");
         configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Origin", "X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
+        log.error("corsConfigurationSource 4");
         configuration.setAllowCredentials(true);
+        log.error("corsConfigurationSource 5");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        log.error("corsConfigurationSource 6");
         source.registerCorsConfiguration("/**", configuration);
+        log.error("corsConfigurationSource 7");
         return source;
     }
 
